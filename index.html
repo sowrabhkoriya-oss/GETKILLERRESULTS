@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Killer Results · Revenue Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & VARIABLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0b0d10;
+      --bg-card: rgba(18, 22, 28, 0.72);
+      --border-glass: rgba(0, 255, 255, 0.15);
+      --cyan: #00f0ff;
+      --cyan-dim: rgba(0, 240, 255, 0.08);
+      --text-primary: #f0f4f8;
+      --text-secondary: #b0c4d9;
+      --text-muted: #6b7f94;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --shadow-card: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 0 5rem;
+    }
+
+    /* ===== GLASS ===== */
+    .glass {
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 10vw, 5.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .text-cyan {
+      color: var(--cyan);
+    }
+
+    .text-muted {
+      color: var(--text-muted);
+    }
+
+    .text-secondary {
+      color: var(--text-secondary);
+    }
+
+    .text-white {
+      color: #ffffff;
+    }
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      background: var(--cyan);
+      color: #0b0d10;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover {
+      background: rgba(0, 240, 255, 0.06);
+      border-color: var(--cyan);
+    }
+
+    .btn-primary:hover {
+      background: #00d4e0;
+      transform: scale(1.02);
+    }
+
+    /* ===== NAV ===== */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      margin-bottom: 3rem;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon {
+      height: 48px;
+      width: auto;
+      border-radius: 8px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .logo-text span {
+      color: var(--cyan);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.5rem 0 3rem;
+      width: 100%;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--cyan-dim);
+      color: var(--cyan);
+      padding: 0.3rem 1rem;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      width: fit-content;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 8vw, 4.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 100%;
+    }
+
+    .hero-tagline {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-description {
+      max-width: 100%;
+      font-size: 1.2rem;
+      color: var(--cyan);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    /* ===== CARDS ===== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card-premium {
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.8rem;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-card);
+    }
+
+    .card-premium:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 240, 255, 0.3);
+      background: rgba(18, 22, 28, 0.85);
+    }
+
+    .card-premium h3 {
+      color: var(--cyan);
+    }
+
+    .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    /* ===== 3-PILLAR FLOW ===== */
+    .pillar-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 2rem 0;
+    }
+
+    .pillar-step {
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.8rem;
+      width: 100%;
+      max-width: 640px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-card);
+    }
+    .pillar-step:hover {
+      border-color: var(--cyan);
+      background: rgba(0, 240, 255, 0.05);
+      transform: scale(1.01);
+    }
+
+    .pillar-step h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .pillar-step .pillar-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.3rem;
+      font-weight: 400;
+    }
+
+    .pillar-arrow {
+      font-size: 2rem;
+      color: var(--cyan);
+      opacity: 0.4;
+      line-height: 1;
+      padding: 0.2rem 0;
+    }
+
+    .pillar-detail {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem 1rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    .pillar-detail span {
+      background: rgba(0, 240, 255, 0.06);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      border: 1px solid rgba(0, 240, 255, 0.06);
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+    .pillar-detail span.highlight {
+      background: rgba(0, 240, 255, 0.12);
+      border-color: rgba(0, 240, 255, 0.2);
+      color: var(--text-primary);
+    }
+
+    .pillar-final {
+      border-color: var(--cyan) !important;
+      background: rgba(0, 240, 255, 0.04) !important;
+    }
+    .pillar-final h3 {
+      color: var(--cyan);
+    }
+
+    /* ===== PILOT ENGAGEMENT LIST ===== */
+    .pilot-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .pilot-feature {
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      transition: 0.2s;
+    }
+    .pilot-feature:hover {
+      border-color: var(--cyan);
+    }
+    .pilot-feature strong {
+      color: var(--text-primary);
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ===== CASE STUDIES ===== */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .case-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .case-card:hover {
+      border-color: var(--cyan);
+    }
+    .case-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--cyan);
+    }
+    .case-title .case-number {
+      color: var(--text-muted);
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+    .case-short-desc {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 0.4rem;
+    }
+    .case-industry {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 0.8rem;
+    }
+    .case-context {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .case-results {
+      background: rgba(0, 240, 255, 0.04);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 1.2rem;
+      margin: 0.2rem 0;
+    }
+    .case-results .result-item {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .case-results .result-item strong {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    .case-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 0.6rem;
+      margin-top: 0.2rem;
+    }
+    .case-services span {
+      background: rgba(0, 240, 255, 0.06);
+      border: 1px solid rgba(0, 240, 255, 0.08);
+      border-radius: 30px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: var(--text-secondary);
+    }
+
+    /* ===== ANALYTICS PLACEHOLDER ===== */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+    .analytics-placeholder {
+      background: var(--bg-card);
+      border: 1px dashed rgba(0, 240, 255, 0.2);
+      border-radius: var(--radius-md);
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .analytics-placeholder:hover {
+      border-color: var(--cyan);
+      color: var(--text-secondary);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline-horizontal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-between;
+      margin: 2rem 0;
+    }
+    .timeline-item {
+      flex: 1 1 200px;
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.6rem 1.5rem;
+      transition: 0.2s;
+    }
+    .timeline-item:hover {
+      border-color: var(--cyan);
+    }
+    .timeline-item .week {
+      color: var(--cyan);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .timeline-item h4 {
+      margin: 0 0 0.6rem 0;
+      font-size: 1.1rem;
+    }
+    .timeline-item ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .timeline-item ul li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      padding: 0.2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .timeline-item ul li::before {
+      content: "•";
+      color: var(--cyan);
+      position: absolute;
+      left: 0;
+    }
+
+    /* ===== TOOLS TABLE ===== */
+    .tools-section {
+      margin: 3rem 0 2rem;
+    }
+    .tools-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .tools-table th {
+      text-align: left;
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: rgba(0, 240, 255, 0.04);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .tools-table td {
+      padding: 0.8rem 1.5rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.95rem;
+    }
+    .tools-table tr:last-child td {
+      border-bottom: none;
+    }
+    .tools-table .check {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    .tools-table .highlight-cell {
+      color: var(--text-primary);
+    }
+    .tools-table .empty-cell {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .tools-table th:first-child,
+    .tools-table td:first-child {
+      width: 35%;
+    }
+    .tools-table th:nth-child(2),
+    .tools-table td:nth-child(2) {
+      width: 32%;
+    }
+    .tools-table th:nth-child(3),
+    .tools-table td:nth-child(3) {
+      width: 33%;
+    }
+
+    @media (max-width: 640px) {
+      .tools-table {
+        font-size: 0.8rem;
+      }
+      .tools-table th,
+      .tools-table td {
+        padding: 0.6rem 0.8rem;
+      }
+      .tools-table th:first-child,
+      .tools-table td:first-child {
+        width: 30%;
+      }
+    }
+
+    /* ===== REPORTING SECTION ===== */
+    .reporting-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    .reporting-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: 0.2s;
+    }
+    .reporting-card:hover {
+      border-color: var(--cyan);
+    }
+    .reporting-card h3 {
+      color: var(--cyan);
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .reporting-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .reporting-card ul li {
+      color: var(--text-secondary);
+      padding: 0.4rem 0;
+      padding-left: 1.4rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+    .reporting-card ul li::before {
+      content: "◆";
+      color: var(--cyan);
+      position: absolute;
+      left: 0;
+      font-size: 0.7rem;
+      top: 0.5rem;
+    }
+    .reporting-intro {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .reporting-intro strong {
+      color: var(--text-primary);
+    }
+
+    .reporting-weekly {
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: 0.2s;
+      grid-column: 1 / -1;
+    }
+    .reporting-weekly:hover {
+      border-color: var(--cyan);
+    }
+    .reporting-weekly h3 {
+      color: var(--cyan);
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .reporting-weekly .weekly-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .reporting-weekly .weekly-grid span {
+      background: rgba(0, 240, 255, 0.04);
+      border: 1px solid rgba(0, 240, 255, 0.06);
+      border-radius: 40px;
+      padding: 0.4rem 1.2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .reporting-grid {
+        grid-template-columns: 1fr;
+      }
+      .reporting-weekly {
+        grid-column: 1;
+      }
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: 60px;
+      padding: 0.6rem 1.4rem 0.6rem 1rem;
+      font-size: 0.95rem;
+    }
+    .check-item::before {
+      content: "✓";
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-item {
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.8rem;
+      overflow: hidden;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.2rem 1.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .faq-question:hover {
+      background: rgba(0, 240, 255, 0.02);
+    }
+    .faq-answer {
+      padding: 0 1.8rem 1.5rem;
+      color: var(--text-secondary);
+      display: none;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-question .icon {
+      transform: rotate(180deg);
+    }
+
+    /* ===== PILOT CARD ===== */
+    .pilot-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--cyan);
+      border-radius: var(--radius-xl);
+      padding: 2.8rem 2.5rem;
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto;
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.06);
+    }
+    .pilot-price {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: -0.02em;
+    }
+    .pilot-desc {
+      color: var(--text-secondary);
+      margin: 1rem 0 1.8rem;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      text-align: center;
+      padding: 3rem 0 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      margin-top: 3rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      body {
+        padding: 0 1rem;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-description {
+        white-space: normal;
+        font-size: 1rem;
+      }
+      .hero-tagline {
+        font-size: 1.2rem;
+      }
+      .navbar {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+      .logo-icon {
+        height: 40px;
+      }
+      .pillar-step {
+        padding: 1.4rem 1.2rem;
+        max-width: 100%;
+      }
+      .pillar-step h3 {
+        font-size: 1.3rem;
+      }
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+      .timeline-horizontal {
+        flex-direction: column;
+      }
+      .timeline-item {
+        flex: 1 1 auto;
+      }
+    }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      margin: 3rem 0 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ===== NAV ===== -->
+    <nav class="navbar">
+      <div class="logo-wrapper">
+        <img src="https://drive.google.com/uc?export=view&id=1TqtCohC8oqDcVD9UqY2hhrEeRRogboKk" 
+             alt="Get Killer Results Logo" 
+             class="logo-icon" />
+        <span class="logo-text">GET <span>KILLER</span> RESULTS</span>
+      </div>
+      <div>
+        <a href="#cta" class="btn btn-primary" style="padding:0.5rem 1.6rem;">Book a Call</a>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero reveal">
+      <div class="hero-badge">✦ The 3-Pillar Revenue Engine™</div>
+      <h1 class="uppercase">Building Revenue Engines<br /><span class="text-cyan">for B2B Startups</span></h1>
+      <p class="hero-tagline">Without Additional Hires or Software Subscriptions.</p>
+      <p class="hero-description">We build your brand authority, run multi-channel outbound, and operate your sales operations.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">Book Strategy Call →</a>
+        <a href="#pillars" class="btn btn-outline">See how it works</a>
+      </div>
+    </section>
+
+    <!-- ===== WHY STARTUPS STRUGGLE ===== -->
+    <section class="reveal">
+      <h2 class="section-title">Why most startups <span class="text-cyan">leak revenue</span></h2>
+      <div class="grid-2">
+        <div class="card-premium">
+          <span class="card-icon">📉</span>
+          <h3>Inconsistent Pipeline</h3>
+          <p class="text-secondary">Relying on referrals &amp; inefficient outbound systems to generate qualified sales opportunities consistently.</p>
+        </div>
+        <div class="card-premium">
+          <span class="card-icon">🔇</span>
+          <h3>No Brand Authority</h3>
+          <p class="text-secondary">Prospects hesitate to trust companies with little social proof and an inactive LinkedIn presence.</p>
+        </div>
+        <div class="card-premium">
+          <span class="card-icon">💰</span>
+          <h3>Expensive Hiring</h3>
+          <p class="text-secondary">Salaries, training, software, and ramp time consume valuable runway before results appear.</p>
+        </div>
+        <div class="card-premium">
+          <span class="card-icon">💧</span>
+          <h3>Lead Leakage</h3>
+          <p class="text-secondary">Manual follow-ups slip through the cracks, and qualified opportunities are lost before they convert.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3-PILLAR REVENUE ENGINE ===== -->
+    <section id="pillars" class="reveal" style="margin-top:4rem;">
+      <h2 class="section-title">The <span class="text-cyan">3‑Pillar</span> Revenue Engine™</h2>
+      <div class="pillar-flow">
+        <div class="pillar-step">
+          <h3>⚡ Generate Demand</h3>
+          <p class="pillar-sub">Reach your ideal buyers consistently through personalized outbound.</p>
+          <div class="pillar-detail">
+            <span>Cold Email</span><span>LinkedIn Outreach</span><span>Warm Calling</span>
+            <span class="highlight">Warm Leads are targeted through all 3 channels</span>
+          </div>
+        </div>
+        <div class="pillar-arrow">↓</div>
+
+        <div class="pillar-step">
+          <h3>🏛️ Build Authority</h3>
+          <p class="pillar-sub">Become the company prospects already recognize and trust before the first conversation.</p>
+          <div class="pillar-detail">
+            <span>LinkedIn Content</span><span>ICP Engagement</span><span>Lead Magnets</span>
+          </div>
+        </div>
+        <div class="pillar-arrow">↓</div>
+
+        <div class="pillar-step">
+          <h3>📈 Sales Operations &amp; Optimization</h3>
+          <p class="pillar-sub">Turn every opportunity into pipeline with a structured sales engine.</p>
+          <div class="pillar-detail">
+            <span>Reply Management</span><span>Follow-up Automation</span>
+            <span>CRM &amp; Pipeline Management</span>
+            <span>Campaign Management</span><span>A/B Testing</span>
+            <span>Weekly Reporting &amp; Optimization</span>
+          </div>
+        </div>
+        <div class="pillar-arrow" style="font-size:2.2rem;">✦</div>
+
+        <div class="pillar-step pillar-final">
+          <h3>Predictable Qualified Meetings</h3>
+          <p class="pillar-sub" style="color:var(--text-secondary);">A repeatable revenue engine that consistently fills your pipeline with qualified sales opportunities.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PILOT ENGAGEMENT ===== -->
+    <section class="reveal" style="margin-top:4rem;">
+      <h2 class="section-title">Typical pilot <span class="text-cyan">engagement</span></h2>
+      <div class="pilot-features">
+        <div class="pilot-feature"><strong>10,000+</strong>Targeted prospects / month</div>
+        <div class="pilot-feature"><strong>40,000+</strong>Cold emails / month</div>
+        <div class="pilot-feature"><strong>800+</strong>LinkedIn outreach</div>
+        <div class="pilot-feature"><strong>✓</strong>Warm Calling Potential Leads</div>
+        <div class="pilot-feature"><strong>2-3</strong>LinkedIn Posts / Week</div>
+        <div class="pilot-feature"><strong>10-20</strong>ICP Engagement Actions / day</div>
+        <div class="pilot-feature"><strong>2</strong>Weekly Meetings &amp; Daily Updates</div>
+      </div>
+    </section>
+
+    <!-- ===== CASE STUDIES ===== -->
+    <section class="reveal" style="margin-top:4rem;">
+      <h2 class="section-title">Client <span class="text-cyan">success</span></h2>
+      <div class="case-grid">
+
+        <!-- Case Study 1 -->
+        <div class="case-card">
+          <div class="case-title">Case Study 1 <span class="case-number">— Cognitiv AI</span></div>
+          <div class="case-short-desc">No outbound, no positioning. GKR built the system and the strategy — from zero to a full pipeline in 60 days.</div>
+          <div class="case-industry"><strong>Industry:</strong> AI Workflow Automation for Staffing Firms</div>
+          <div class="case-results">
+            <div class="result-item"><strong>20</strong> warm leads generated</div>
+            <div class="result-item"><strong>4</strong> deals closed</div>
+            <div class="result-item"><strong>$80,000</strong> in LTV</div>
+            <div class="result-item" style="color:var(--text-muted);font-size:0.85rem;">All within 60 days</div>
+          </div>
+          <div class="case-services">
+            <span>Offer Positioning</span><span>ICP Definition</span>
+            <span>Cold Email</span><span>LinkedIn Outreach</span><span>Warm Calling</span>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="case-card">
+          <div class="case-title">Case Study 2 <span class="case-number">— GAC</span></div>
+          <div class="case-short-desc">Needed to break into enterprise. GKR opened doors they couldn't — including a connection with Hitachi Global within the first two weeks.</div>
+          <div class="case-industry"><strong>Industry:</strong> Data Infrastructure Services — SnapLogic Partner</div>
+          <div class="case-results">
+            <div class="result-item"><strong>Connected</strong> with Hitachi Global in Week 2</div>
+            <div class="result-item"><strong>8</strong> qualified enterprise meetings booked</div>
+          </div>
+          <div class="case-services">
+            <span>Enterprise Outreach</span><span>Cold Email</span>
+            <span>LinkedIn Outreach</span><span>Warm Calling</span>
+          </div>
+        </div>
+
+        <!-- Case Study 3 -->
+        <div class="case-card">
+          <div class="case-title">Case Study 3 <span class="case-number">— Space Inventive (Talliant.ai)</span></div>
+          <div class="case-short-desc">Great product, no go-to-market motion. GKR built the pipeline from scratch and helped them land their first paying client.</div>
+          <div class="case-industry"><strong>Industry:</strong> AI Hiring Platform</div>
+          <div class="case-results">
+            <div class="result-item"><strong>20</strong> booked meetings</div>
+            <div class="result-item"><strong>Closed</strong> their first paying client</div>
+            <div class="result-item" style="color:var(--text-muted);font-size:0.85rem;">All within 60 days</div>
+          </div>
+          <div class="case-services">
+            <span>Cold Calling</span><span>Cold Email</span>
+            <span>LinkedIn Outreach</span><span>Warm Calling</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== ANALYTICS PLACEHOLDER ===== -->
+    <section class="reveal" style="margin-top:4rem;">
+      <h2 class="section-title">Real <span class="text-cyan">campaign performance</span></h2>
+      <div class="analytics-grid">
+        <div class="analytics-placeholder">📊 Screenshot 1</div>
+        <div class="analytics-placeholder">📈 Screenshot 2</div>
+        <div class="analytics-placeholder">📉 Screenshot 3</div>
+        <div class="analytics-placeholder">📋 Screenshot 4</div>
+      </div>
+      <p class="text-muted" style="text-align:center;font-size:0.9rem;">Replace placeholders with actual analytics images.</p>
+    </section>
+
+    <!-- ===== YOUR FIRST 90 DAYS ===== -->
+    <section class="reveal" style="margin-top:4rem;">
+      <h2 class="section-title">Your first <span class="text-cyan">90 days</span></h2>
+      <div class="timeline-horizontal">
+        <div class="timeline-item">
+          <span class="week">Week 1</span>
+          <h4>Discovery</h4>
+          <ul>
+            <li>Discovery Session</li>
+            <li>Offer Positioning</li>
+            <li>ICP Definition</li>
+            <li>LinkedIn Profile Optimizing/Branding</li>
+            <li>Infrastructure Setup</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <span class="week">Week 2</span>
+          <h4>Launch</h4>
+          <ul>
+            <li>Lead List Creation, Verification &amp; Approval</li>
+            <li>Script Writing &amp; Approval</li>
+            <li>LinkedIn Content Begins</li>
+            <li>LinkedIn Campaign Launch</li>
+            <li>Email Outreach Starts</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <span class="week">Weeks 3–4</span>
+          <h4>Optimize</h4>
+          <ul>
+            <li>Campaign Optimization</li>
+            <li>ICP Engagement</li>
+            <li>Reply Handling</li>
+            <li>Meeting Booking</li>
+            <li>Weekly Reports</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <span class="week">Month 2+</span>
+          <h4>Scale</h4>
+          <ul>
+            <li>Scale Winning Campaigns</li>
+            <li>Improve Messaging</li>
+            <li>Increase Meeting Volume</li>
+            <li>Continue Authority Building</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TOOLS & INFRASTRUCTURE COVERAGE ===== -->
+    <section class="reveal tools-section">
+      <h2 class="section-title">Tools &amp; Infrastructure <span class="text-cyan">Coverage</span></h2>
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Provided by GKR</th>
+            <th>Provided by Client</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Email Sending Software</td>
+            <td class="check">✓</td>
+            <td class="empty-cell">—</td>
+          </tr>
+          <tr>
+            <td>Google Workspace / Outlook Inbox Setup</td>
+            <td class="check">✓</td>
+            <td class="empty-cell">—</td>
+          </tr>
+          <tr>
+            <td>Email Verification Tools</td>
+            <td class="check">✓</td>
+            <td class="empty-cell">—</td>
+          </tr>
+          <tr>
+            <td>Lead List Building Tools</td>
+            <td class="check">✓</td>
+            <td class="empty-cell">—</td>
+          </tr>
+          <tr>
+            <td>CRM &amp; Inbox Management System</td>
+            <td class="check">✓</td>
+            <td class="empty-cell">—</td>
+          </tr>
+          <tr>
+            <td>LinkedIn Automation Software</td>
+            <td class="check">✓</td>
+            <td class="empty-cell">—</td>
+          </tr>
+          <tr>
+            <td>Calling &amp; SMS Infrastructure</td>
+            <td class="check">✓</td>
+            <td class="empty-cell">—</td>
+          </tr>
+          <tr>
+            <td>Graphic Design Tools</td>
+            <td class="check">✓</td>
+            <td class="empty-cell">—</td>
+          </tr>
+          <tr>
+            <td>Outreach Domains</td>
+            <td class="empty-cell">—</td>
+            <td class="highlight-cell">✓</td>
+          </tr>
+          <tr>
+            <td>LinkedIn Account + Premium (if needed)</td>
+            <td class="empty-cell">—</td>
+            <td class="highlight-cell">✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ===== REPORTING & TRANSPARENCY ===== -->
+    <section class="reveal" style="margin-top:4rem;">
+      <h2 class="section-title">Reporting &amp; <span class="text-cyan">Transparency</span></h2>
+      <p class="reporting-intro">
+        Every tool, dashboard, and data point GKR uses is accessible to Client — <strong>24/7, in real time.</strong>
+      </p>
+      <div class="reporting-grid">
+        <div class="reporting-card">
+          <h3>What you can see anytime</h3>
+          <ul>
+            <li>Live outbound volume and daily activity</li>
+            <li>Full analytics dashboard</li>
+            <li>Master inbox — every reply, every conversation</li>
+            <li>Lead lists — who we're targeting and why</li>
+          </ul>
+        </div>
+        <div class="reporting-card reporting-weekly">
+          <h3>Weekly Strategy Call</h3>
+          <p style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:0.8rem;">
+            Every week we sit down and walk through what happened, what worked, and what's next.
+          </p>
+          <div class="weekly-grid">
+            <span>Emails sent &amp; reply rate</span>
+            <span>Positive replies &amp; meetings booked</span>
+            <span>LinkedIn growth &amp; content performance</span>
+            <span>Improvements made this week</span>
+            <span>Plan for next week</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EVERYTHING INCLUDED ===== -->
+    <section class="reveal" style="margin-top:4rem;">
+      <h2 class="section-title">Everything <span class="text-cyan">included</span></h2>
+      <div class="checklist-grid">
+        <div class="check-item">Cold Email</div>
+        <div class="check-item">LinkedIn Outreach</div>
+        <div class="check-item">Warm Calling</div>
+        <div class="check-item">Lead Lists</div>
+        <div class="check-item">LinkedIn Content</div>
+        <div class="check-item">Reporting</div>
+        <div class="check-item">Optimization</div>
+        <div class="check-item">Software &amp; Tools</div>
+        <div class="check-item">ICP Research</div>
+        <div class="check-item">Campaign Management</div>
+        <div class="check-item">Inbox Management</div>
+        <div class="check-item">Reply Handling</div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="reveal" style="margin-top:4rem;">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq-item">
+        <div class="faq-question"><span>How long before we start seeing meetings?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">Typically within 2–3 weeks after launch. Some clients see interest in week 1.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Who writes the content?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">Our team writes everything — from emails to LinkedIn posts — aligned with your brand.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Do I need to purchase any software?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">No. We provide all tools and licenses as part of the service.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Can I approve messaging before launch?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">Absolutely. Every campaign runs through your approval before going live.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>How are meetings qualified?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">We use BANT + ICP fit. Only meetings with decision‑makers and clear pain points are passed.</div>
+      </div>
+    </section>
+
+    <!-- ===== PILOT PROGRAM ===== -->
+    <section class="reveal" style="margin-top:4rem;">
+      <div class="pilot-card">
+        <h3 style="font-weight:500;">Pilot Program</h3>
+        <div class="pilot-price">₹20,000</div>
+        <div style="color:var(--text-secondary);margin:-0.2rem 0 1rem;">every two weeks</div>
+        <p class="pilot-desc">Full‑stack revenue engine: outbound, authority, optimization. No hidden costs.</p>
+        <a href="#cta" class="btn btn-primary" style="width:100%;justify-content:center;">Start pilot →</a>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section id="cta" class="cta-section reveal">
+      <h2 style="font-size:2.6rem;">Ready to build <span class="text-cyan">predictable pipeline</span>?</h2>
+      <p style="color:var(--text-secondary);max-width:400px;margin:0.6rem auto 2rem;">Book a 30‑min strategy call. No fluff, just a roadmap.</p>
+      <a href="https://calendly.com/sowrabhkoriya/30min" target="_blank" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.2rem;">Book a Strategy Call →</a>
+      <div style="margin-top:3rem;font-size:0.8rem;color:var(--text-muted);">© Get Killer Results — built for B2B startups</div>
+    </section>
+
+  </div>
+
+  <script>
+    // ===== SCRIPT.JS =====
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // ---- FAQ Accordion ----
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const q = item.querySelector('.faq-question');
+        q.addEventListener('click', function() {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach(i => i.classList.remove('active'));
+          if (!isActive) item.classList.add('active');
+        });
+      });
+      if (faqItems.length) faqItems[0].classList.add('active');
+
+      // ---- Scroll Reveal ----
+      const reveals = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(r => revealObserver.observe(r));
+
+    });
+  </script>
+</body>
+</html>
