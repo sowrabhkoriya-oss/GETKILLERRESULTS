@@ -18,12 +18,12 @@
     :root {
       --bg-primary: #0b0d10;
       --bg-card: rgba(18, 22, 28, 0.72);
-      --border-glass: rgba(0, 255, 255, 0.15);
+      --border-glass: rgba(0, 255, 255, 0.25);
       --cyan: #00f0ff;
       --cyan-dim: rgba(0, 240, 255, 0.08);
       --text-primary: #f0f4f8;
-      --text-secondary: #b0c4d9;
-      --text-muted: #6b7f94;
+      --text-secondary: #c8d8e8;
+      --text-muted: #8899aa;
       --radius-xl: 32px;
       --radius-lg: 24px;
       --radius-md: 16px;
@@ -33,20 +33,30 @@
     html {
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     body {
       background-color: var(--bg-primary);
       color: var(--text-primary);
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      line-height: 1.5;
+      line-height: 1.6;
       padding: 0 1.5rem;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem 0 5rem;
+    }
+
+    /* ===== DIVIDER LINE ===== */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+      margin: 3rem 0;
     }
 
     /* ===== GLASS ===== */
@@ -74,6 +84,7 @@
     h2 {
       font-size: clamp(2rem, 5vw, 3rem);
       margin-bottom: 1rem;
+      text-transform: uppercase;
     }
 
     .text-cyan {
@@ -96,6 +107,36 @@
       text-transform: uppercase;
     }
 
+    .text-center {
+      text-align: center;
+    }
+
+    /* ===== BODY TEXT IMPROVEMENTS ===== */
+    p, li, .pillar-sub, .case-short-desc, .case-industry, .case-context, .result-item, .reporting-card ul li, .faq-answer, .results-desc, .results-step .results-grid span, .pilot-feature, .contact-item, .check-item {
+      font-weight: 450;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    .card-premium p {
+      font-weight: 450;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .pillar-sub {
+      font-weight: 450;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .case-short-desc {
+      font-weight: 450;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
     /* ===== BUTTONS ===== */
     .btn {
       display: inline-flex;
@@ -110,7 +151,7 @@
       transition: all 0.2s ease;
       text-decoration: none;
       background: var(--cyan);
-      color: #0b0d10;
+      color: #0b0d10 !important;
     }
 
     .btn-outline {
@@ -127,6 +168,10 @@
     .btn-primary:hover {
       background: #00d4e0;
       transform: scale(1.02);
+    }
+
+    .btn-primary {
+      color: #0b0d10 !important;
     }
 
     /* ===== NAV ===== */
@@ -164,22 +209,11 @@
     .hero {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      padding: 1.5rem 0 3rem;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem 0 3.5rem;
       width: 100%;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: var(--cyan-dim);
-      color: var(--cyan);
-      padding: 0.3rem 1rem;
-      border-radius: 60px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      width: fit-content;
+      text-align: center;
     }
 
     .hero h1 {
@@ -198,17 +232,51 @@
 
     .hero-description {
       max-width: 100%;
-      font-size: 1.2rem;
-      color: var(--cyan);
-      font-weight: 500;
+      background: linear-gradient(to right, rgba(0, 240, 255, 0.08), rgba(0, 240, 255, 0.15), rgba(0, 240, 255, 0.08));
+      padding: 0.8rem 2.5rem;
+      border-radius: 12px;
+      display: inline-block;
+      width: auto;
+      min-width: fit-content;
+      text-align: center;
+    }
+
+    .hero-description .main-line {
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: block;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
       white-space: nowrap;
+    }
+
+    .hero-description .highlight-line {
+      display: block;
+      font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.04em;
+      margin-top: 0.2rem;
+      line-height: 1.3;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-top: 0.25rem;
+      margin-top: 0.5rem;
+      justify-content: center;
+    }
+
+    /* ===== SOLVE LINE ===== */
+    .solve-line {
+      text-align: center;
+      color: var(--cyan);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 1.5rem 0 2rem;
+      letter-spacing: 0.3px;
     }
 
     /* ===== CARDS ===== */
@@ -226,22 +294,36 @@
       padding: 2rem 1.8rem;
       transition: all 0.25s ease;
       box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .card-premium:hover {
       transform: translateY(-6px);
-      border-color: rgba(0, 240, 255, 0.3);
+      border-color: rgba(0, 240, 255, 0.4);
       background: rgba(18, 22, 28, 0.85);
+    }
+
+    .card-premium .card-icon {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 1rem;
+      line-height: 1;
     }
 
     .card-premium h3 {
       color: var(--cyan);
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.8rem;
     }
 
-    .card-icon {
-      font-size: 2.2rem;
-      margin-bottom: 0.8rem;
-      display: block;
+    .card-premium p {
+      margin: 0;
+      max-width: 100%;
     }
 
     /* ===== 3-PILLAR FLOW ===== */
@@ -258,15 +340,16 @@
       backdrop-filter: blur(4px);
       border: 1px solid var(--border-glass);
       border-radius: var(--radius-lg);
-      padding: 2rem 2.8rem;
+      padding: 2.2rem 2.8rem;
       width: 100%;
-      max-width: 640px;
+      max-width: 820px;
       text-align: center;
       transition: all 0.3s ease;
       box-shadow: var(--shadow-card);
+      min-height: auto;
     }
     .pillar-step:hover {
-      border-color: var(--cyan);
+      border-color: rgba(0, 240, 255, 0.4);
       background: rgba(0, 240, 255, 0.05);
       transform: scale(1.01);
     }
@@ -274,15 +357,18 @@
     .pillar-step h3 {
       font-size: 1.6rem;
       font-weight: 600;
-      color: var(--text-primary);
+      color: var(--cyan);
       letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
     }
 
     .pillar-step .pillar-sub {
       font-size: 1rem;
-      color: var(--text-secondary);
       margin-top: 0.3rem;
-      font-weight: 400;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .pillar-arrow {
@@ -297,7 +383,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.6rem 1rem;
+      gap: 0.6rem 0.8rem;
       margin-top: 1rem;
       font-size: 0.95rem;
     }
@@ -307,7 +393,7 @@
       border-radius: 40px;
       border: 1px solid rgba(0, 240, 255, 0.06);
       color: var(--text-secondary);
-      font-weight: 400;
+      font-weight: 450;
     }
     .pillar-detail span.highlight {
       background: rgba(0, 240, 255, 0.12);
@@ -326,7 +412,7 @@
     /* ===== PILOT ENGAGEMENT LIST ===== */
     .pilot-features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1rem;
       margin: 1.5rem 0 2rem;
     }
@@ -337,12 +423,11 @@
       border-radius: var(--radius-md);
       padding: 1.2rem 1.5rem;
       text-align: center;
-      font-size: 1rem;
-      color: var(--text-secondary);
+      font-size: 0.95rem;
       transition: 0.2s;
     }
     .pilot-feature:hover {
-      border-color: var(--cyan);
+      border-color: rgba(0, 240, 255, 0.4);
     }
     .pilot-feature strong {
       color: var(--text-primary);
@@ -369,35 +454,38 @@
       gap: 0.6rem;
     }
     .case-card:hover {
-      border-color: var(--cyan);
+      border-color: rgba(0, 240, 255, 0.4);
     }
     .case-title {
       font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--cyan);
+      text-transform: uppercase;
     }
     .case-title .case-number {
       color: var(--text-muted);
       font-weight: 400;
       font-size: 0.9rem;
+      text-transform: none;
+    }
+    .case-title .case-company {
+      color: var(--cyan);
+      text-transform: uppercase;
     }
     .case-short-desc {
-      color: var(--text-secondary);
       font-size: 1rem;
-      line-height: 1.5;
+      line-height: 1.6;
       margin-bottom: 0.4rem;
     }
     .case-industry {
-      color: var(--text-secondary);
       font-size: 0.9rem;
       border-bottom: 1px solid rgba(255,255,255,0.05);
       padding-bottom: 0.8rem;
     }
     .case-context {
-      color: var(--text-secondary);
       font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.7;
     }
     .case-results {
       background: rgba(0, 240, 255, 0.04);
@@ -406,7 +494,6 @@
       margin: 0.2rem 0;
     }
     .case-results .result-item {
-      color: var(--text-secondary);
       font-size: 0.95rem;
     }
     .case-results .result-item strong {
@@ -428,30 +515,31 @@
       text-transform: uppercase;
       letter-spacing: 0.3px;
       color: var(--text-secondary);
+      font-weight: 450;
     }
 
-    /* ===== ANALYTICS PLACEHOLDER ===== */
+    /* ===== ANALYTICS IMAGES ===== */
     .analytics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.8rem;
       margin: 2rem 0;
     }
-    .analytics-placeholder {
-      background: var(--bg-card);
-      border: 1px dashed rgba(0, 240, 255, 0.2);
+
+    .analytics-image {
+      width: 100%;
+      height: auto;
       border-radius: var(--radius-md);
+      border: 1px solid var(--border-glass);
+      transition: all 0.3s ease;
+      object-fit: cover;
       aspect-ratio: 16 / 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      transition: 0.2s;
+      background: var(--bg-card);
     }
-    .analytics-placeholder:hover {
+    .analytics-image:hover {
+      transform: scale(1.02);
       border-color: var(--cyan);
-      color: var(--text-secondary);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.08);
     }
 
     /* ===== TIMELINE ===== */
@@ -472,7 +560,7 @@
       transition: 0.2s;
     }
     .timeline-item:hover {
-      border-color: var(--cyan);
+      border-color: rgba(0, 240, 255, 0.4);
     }
     .timeline-item .week {
       color: var(--cyan);
@@ -494,7 +582,6 @@
     }
     .timeline-item ul li {
       font-size: 0.85rem;
-      color: var(--text-secondary);
       padding: 0.2rem 0;
       padding-left: 1rem;
       position: relative;
@@ -529,7 +616,6 @@
     }
     .tools-table td {
       padding: 0.8rem 1.5rem;
-      color: var(--text-secondary);
       border-bottom: 1px solid rgba(255,255,255,0.04);
       font-size: 0.95rem;
     }
@@ -586,28 +672,35 @@
       backdrop-filter: blur(4px);
       border: 1px solid var(--border-glass);
       border-radius: var(--radius-lg);
-      padding: 2rem;
+      padding: 2rem 2rem;
       transition: 0.2s;
+      display: flex;
+      flex-direction: column;
     }
     .reporting-card:hover {
-      border-color: var(--cyan);
+      border-color: rgba(0, 240, 255, 0.4);
     }
     .reporting-card h3 {
       color: var(--cyan);
       font-size: 1.2rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
     }
     .reporting-card ul {
       list-style: none;
       padding: 0;
       margin: 0;
+      flex: 1;
     }
     .reporting-card ul li {
-      color: var(--text-secondary);
-      padding: 0.4rem 0;
+      padding: 0.5rem 0;
       padding-left: 1.4rem;
       position: relative;
       font-size: 0.95rem;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-weight: 450;
+    }
+    .reporting-card ul li:last-child {
+      border-bottom: none;
     }
     .reporting-card ul li::before {
       content: "◆";
@@ -615,13 +708,14 @@
       position: absolute;
       left: 0;
       font-size: 0.7rem;
-      top: 0.5rem;
+      top: 0.6rem;
     }
     .reporting-intro {
-      color: var(--text-secondary);
       font-size: 1.05rem;
       margin-bottom: 1.5rem;
       line-height: 1.6;
+      text-align: center;
+      font-weight: 450;
     }
     .reporting-intro strong {
       color: var(--text-primary);
@@ -632,12 +726,13 @@
       backdrop-filter: blur(4px);
       border: 1px solid var(--border-glass);
       border-radius: var(--radius-lg);
-      padding: 2rem;
+      padding: 2rem 2rem;
       transition: 0.2s;
-      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
     }
     .reporting-weekly:hover {
-      border-color: var(--cyan);
+      border-color: rgba(0, 240, 255, 0.4);
     }
     .reporting-weekly h3 {
       color: var(--cyan);
@@ -646,27 +741,161 @@
     }
     .reporting-weekly .weekly-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 0.8rem;
       margin-top: 0.8rem;
+      flex: 1;
     }
     .reporting-weekly .weekly-grid span {
       background: rgba(0, 240, 255, 0.04);
       border: 1px solid rgba(0, 240, 255, 0.06);
       border-radius: 40px;
-      padding: 0.4rem 1.2rem;
+      padding: 0.6rem 1.2rem;
       text-align: center;
-      color: var(--text-secondary);
       font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 450;
     }
 
     @media (max-width: 640px) {
       .reporting-grid {
         grid-template-columns: 1fr;
       }
-      .reporting-weekly {
-        grid-column: 1;
+      .reporting-weekly .weekly-grid {
+        grid-template-columns: 1fr;
       }
+    }
+
+    /* ===== EXPECTED RESULTS ===== */
+    .results-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .results-step {
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.5rem;
+      width: 100%;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-card);
+    }
+    .results-step:hover {
+      border-color: rgba(0, 240, 255, 0.4);
+      background: rgba(0, 240, 255, 0.05);
+    }
+
+    .results-step h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.8rem;
+    }
+
+    .results-step .results-desc {
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .results-step .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      margin: 0.8rem 0;
+    }
+    .results-step .results-grid span {
+      background: rgba(0, 240, 255, 0.04);
+      border: 1px solid rgba(0, 240, 255, 0.06);
+      border-radius: 40px;
+      padding: 0.4rem 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 450;
+    }
+
+    .results-arrow {
+      font-size: 2rem;
+      color: var(--cyan);
+      opacity: 0.4;
+      line-height: 1;
+      padding: 0.2rem 0;
+    }
+
+    .results-disclaimer {
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 1.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-section {
+      margin-top: 3rem;
+      padding: 1.8rem 2rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+    .contact-section h2 {
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      align-items: center;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+    }
+    .contact-item .icon {
+      font-size: 1.2rem;
+    }
+    .contact-item a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: 0.2s;
+      font-weight: 450;
+    }
+    .contact-item a:hover {
+      color: var(--cyan);
+    }
+    .contact-item .linkedin-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .contact-item .linkedin-link:hover {
+      color: var(--cyan);
+    }
+    .contact-item .linkedin-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     /* ===== CHECKLIST ===== */
@@ -686,6 +915,7 @@
       border-radius: 60px;
       padding: 0.6rem 1.4rem 0.6rem 1rem;
       font-size: 0.95rem;
+      font-weight: 450;
     }
     .check-item::before {
       content: "✓";
@@ -703,6 +933,9 @@
       margin-bottom: 0.8rem;
       overflow: hidden;
     }
+    .faq-item:hover {
+      border-color: rgba(0, 240, 255, 0.4);
+    }
     .faq-question {
       display: flex;
       justify-content: space-between;
@@ -716,8 +949,9 @@
     }
     .faq-answer {
       padding: 0 1.8rem 1.5rem;
-      color: var(--text-secondary);
       display: none;
+      line-height: 1.8;
+      font-weight: 450;
     }
     .faq-item.active .faq-answer {
       display: block;
@@ -744,9 +978,15 @@
       color: var(--cyan);
       letter-spacing: -0.02em;
     }
-    .pilot-desc {
+    .pilot-sub {
       color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin: 0.2rem 0 0.5rem;
+      font-weight: 450;
+    }
+    .pilot-desc {
       margin: 1rem 0 1.8rem;
+      font-weight: 450;
     }
 
     /* ===== CTA SECTION ===== */
@@ -758,17 +998,30 @@
     }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-description .main-line {
+        white-space: normal;
+        font-size: 1rem;
+      }
+      .hero-description {
+        padding: 0.6rem 1.2rem;
+        width: 100%;
+      }
+    }
+
     @media (max-width: 640px) {
       body {
         padding: 0 1rem;
       }
       .hero-actions {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
       }
-      .hero-description {
-        white-space: normal;
-        font-size: 1rem;
+      .hero-description .main-line {
+        font-size: 0.95rem;
+      }
+      .hero-description .highlight-line {
+        font-size: 1.1rem;
       }
       .hero-tagline {
         font-size: 1.2rem;
@@ -776,6 +1029,7 @@
       .navbar {
         flex-wrap: wrap;
         gap: 0.8rem;
+        justify-content: center;
       }
       .logo-icon {
         height: 40px;
@@ -796,6 +1050,22 @@
       .timeline-item {
         flex: 1 1 auto;
       }
+      .contact-grid {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .contact-section {
+        padding: 1.2rem 1rem;
+      }
+      .results-step {
+        padding: 1.5rem 1.2rem;
+      }
+      .results-step .results-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .analytics-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     /* ===== REVEAL ANIMATION ===== */
@@ -811,6 +1081,7 @@
 
     .section-title {
       margin: 3rem 0 1.5rem;
+      text-align: center;
     }
   </style>
 </head>
@@ -820,7 +1091,7 @@
     <!-- ===== NAV ===== -->
     <nav class="navbar">
       <div class="logo-wrapper">
-        <img src="https://drive.google.com/uc?export=view&id=1TqtCohC8oqDcVD9UqY2hhrEeRRogboKk" 
+        <img src="images/gkr-logo.png" 
              alt="Get Killer Results Logo" 
              class="logo-icon" />
         <span class="logo-text">GET <span>KILLER</span> RESULTS</span>
@@ -830,52 +1101,61 @@
       </div>
     </nav>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== 1. HERO ===== -->
     <section class="hero reveal">
-      <div class="hero-badge">✦ The 3-Pillar Revenue Engine™</div>
       <h1 class="uppercase">Building Revenue Engines<br /><span class="text-cyan">for B2B Startups</span></h1>
       <p class="hero-tagline">Without Additional Hires or Software Subscriptions.</p>
-      <p class="hero-description">We build your brand authority, run multi-channel outbound, and operate your sales operations.</p>
+      <div class="hero-description">
+        <span class="main-line">We build your brand authority, run multi-channel outbound, and operate your sales operations.</span>
+        <span class="highlight-line">ALL AT A SINGLE COST.</span>
+      </div>
       <div class="hero-actions">
         <a href="#cta" class="btn btn-primary">Book Strategy Call →</a>
-        <a href="#pillars" class="btn btn-outline">See how it works</a>
+        <a href="#pillars" class="btn btn-primary">See how it works →</a>
       </div>
     </section>
 
-    <!-- ===== WHY STARTUPS STRUGGLE ===== -->
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 2. WHY STARTUPS STRUGGLE ===== -->
     <section class="reveal">
       <h2 class="section-title">Why most startups <span class="text-cyan">leak revenue</span></h2>
       <div class="grid-2">
         <div class="card-premium">
           <span class="card-icon">📉</span>
           <h3>Inconsistent Pipeline</h3>
-          <p class="text-secondary">Relying on referrals &amp; inefficient outbound systems to generate qualified sales opportunities consistently.</p>
+          <p>Most startups rely on referrals or inconsistent outbound making it difficult to generate sales opportunities consistently.</p>
         </div>
         <div class="card-premium">
           <span class="card-icon">🔇</span>
           <h3>No Brand Authority</h3>
-          <p class="text-secondary">Prospects hesitate to trust companies with little social proof and an inactive LinkedIn presence.</p>
+          <p>Prospects hesitate to trust companies with little social proof and an inactive LinkedIn presence.</p>
         </div>
         <div class="card-premium">
           <span class="card-icon">💰</span>
           <h3>Expensive Hiring</h3>
-          <p class="text-secondary">Salaries, training, software, and ramp time consume valuable runway before results appear.</p>
+          <p>Salaries, training, software, and ramp time consume valuable runway before results appear.</p>
         </div>
         <div class="card-premium">
           <span class="card-icon">💧</span>
           <h3>Lead Leakage</h3>
-          <p class="text-secondary">Manual follow-ups slip through the cracks, and qualified opportunities are lost before they convert.</p>
+          <p>Manual follow-ups slip through the cracks, and qualified opportunities are lost before they convert.</p>
         </div>
       </div>
+      <p class="solve-line">Below is our mechanism to solve this for you</p>
     </section>
 
-    <!-- ===== 3-PILLAR REVENUE ENGINE ===== -->
-    <section id="pillars" class="reveal" style="margin-top:4rem;">
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 3. THE 3-PILLAR REVENUE ENGINE ===== -->
+    <section id="pillars" class="reveal">
       <h2 class="section-title">The <span class="text-cyan">3‑Pillar</span> Revenue Engine™</h2>
       <div class="pillar-flow">
         <div class="pillar-step">
           <h3>⚡ Generate Demand</h3>
-          <p class="pillar-sub">Reach your ideal buyers consistently through personalized outbound.</p>
+          <p class="pillar-sub">Build a predictable pipeline by reaching the right decision-makers across multiple outbound channels.</p>
           <div class="pillar-detail">
             <span>Cold Email</span><span>LinkedIn Outreach</span><span>Warm Calling</span>
             <span class="highlight">Warm Leads are targeted through all 3 channels</span>
@@ -885,7 +1165,7 @@
 
         <div class="pillar-step">
           <h3>🏛️ Build Authority</h3>
-          <p class="pillar-sub">Become the company prospects already recognize and trust before the first conversation.</p>
+          <p class="pillar-sub">Show prospects that your company is active, growing, and consistent. Increase Trust in Cold Leads and boosts Inbound Enquiries.</p>
           <div class="pillar-detail">
             <span>LinkedIn Content</span><span>ICP Engagement</span><span>Lead Magnets</span>
           </div>
@@ -911,139 +1191,28 @@
       </div>
     </section>
 
-    <!-- ===== PILOT ENGAGEMENT ===== -->
-    <section class="reveal" style="margin-top:4rem;">
-      <h2 class="section-title">Typical pilot <span class="text-cyan">engagement</span></h2>
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 4. PILOT ENGAGEMENT INCLUDES ===== -->
+    <section class="reveal">
+      <h2 class="section-title">Pilot <span class="text-cyan">engagement includes</span></h2>
       <div class="pilot-features">
         <div class="pilot-feature"><strong>10,000+</strong>Targeted prospects / month</div>
         <div class="pilot-feature"><strong>40,000+</strong>Cold emails / month</div>
-        <div class="pilot-feature"><strong>800+</strong>LinkedIn outreach</div>
+        <div class="pilot-feature"><strong>800</strong>LinkedIn Connections</div>
+        <div class="pilot-feature"><strong>1,600+</strong>LinkedIn Pitches</div>
         <div class="pilot-feature"><strong>✓</strong>Warm Calling Potential Leads</div>
         <div class="pilot-feature"><strong>2-3</strong>LinkedIn Posts / Week</div>
-        <div class="pilot-feature"><strong>10-20</strong>ICP Engagement Actions / day</div>
-        <div class="pilot-feature"><strong>2</strong>Weekly Meetings &amp; Daily Updates</div>
+        <div class="pilot-feature" style="grid-column: span 1; justify-self: center;"><strong>10-20</strong>ICP Engagement<br />(Comments, Likes, Profile Visits, Follows) / day</div>
+        <div class="pilot-feature" style="grid-column: span 1; justify-self: center;"><strong>✓</strong>Daily CRM Updates &amp;<br />2 Weekly Strategy Meetings</div>
       </div>
     </section>
 
-    <!-- ===== CASE STUDIES ===== -->
-    <section class="reveal" style="margin-top:4rem;">
-      <h2 class="section-title">Client <span class="text-cyan">success</span></h2>
-      <div class="case-grid">
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
 
-        <!-- Case Study 1 -->
-        <div class="case-card">
-          <div class="case-title">Case Study 1 <span class="case-number">— Cognitiv AI</span></div>
-          <div class="case-short-desc">No outbound, no positioning. GKR built the system and the strategy — from zero to a full pipeline in 60 days.</div>
-          <div class="case-industry"><strong>Industry:</strong> AI Workflow Automation for Staffing Firms</div>
-          <div class="case-results">
-            <div class="result-item"><strong>20</strong> warm leads generated</div>
-            <div class="result-item"><strong>4</strong> deals closed</div>
-            <div class="result-item"><strong>$80,000</strong> in LTV</div>
-            <div class="result-item" style="color:var(--text-muted);font-size:0.85rem;">All within 60 days</div>
-          </div>
-          <div class="case-services">
-            <span>Offer Positioning</span><span>ICP Definition</span>
-            <span>Cold Email</span><span>LinkedIn Outreach</span><span>Warm Calling</span>
-          </div>
-        </div>
-
-        <!-- Case Study 2 -->
-        <div class="case-card">
-          <div class="case-title">Case Study 2 <span class="case-number">— GAC</span></div>
-          <div class="case-short-desc">Needed to break into enterprise. GKR opened doors they couldn't — including a connection with Hitachi Global within the first two weeks.</div>
-          <div class="case-industry"><strong>Industry:</strong> Data Infrastructure Services — SnapLogic Partner</div>
-          <div class="case-results">
-            <div class="result-item"><strong>Connected</strong> with Hitachi Global in Week 2</div>
-            <div class="result-item"><strong>8</strong> qualified enterprise meetings booked</div>
-          </div>
-          <div class="case-services">
-            <span>Enterprise Outreach</span><span>Cold Email</span>
-            <span>LinkedIn Outreach</span><span>Warm Calling</span>
-          </div>
-        </div>
-
-        <!-- Case Study 3 -->
-        <div class="case-card">
-          <div class="case-title">Case Study 3 <span class="case-number">— Space Inventive (Talliant.ai)</span></div>
-          <div class="case-short-desc">Great product, no go-to-market motion. GKR built the pipeline from scratch and helped them land their first paying client.</div>
-          <div class="case-industry"><strong>Industry:</strong> AI Hiring Platform</div>
-          <div class="case-results">
-            <div class="result-item"><strong>20</strong> booked meetings</div>
-            <div class="result-item"><strong>Closed</strong> their first paying client</div>
-            <div class="result-item" style="color:var(--text-muted);font-size:0.85rem;">All within 60 days</div>
-          </div>
-          <div class="case-services">
-            <span>Cold Calling</span><span>Cold Email</span>
-            <span>LinkedIn Outreach</span><span>Warm Calling</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===== ANALYTICS PLACEHOLDER ===== -->
-    <section class="reveal" style="margin-top:4rem;">
-      <h2 class="section-title">Real <span class="text-cyan">campaign performance</span></h2>
-      <div class="analytics-grid">
-        <div class="analytics-placeholder">📊 Screenshot 1</div>
-        <div class="analytics-placeholder">📈 Screenshot 2</div>
-        <div class="analytics-placeholder">📉 Screenshot 3</div>
-        <div class="analytics-placeholder">📋 Screenshot 4</div>
-      </div>
-      <p class="text-muted" style="text-align:center;font-size:0.9rem;">Replace placeholders with actual analytics images.</p>
-    </section>
-
-    <!-- ===== YOUR FIRST 90 DAYS ===== -->
-    <section class="reveal" style="margin-top:4rem;">
-      <h2 class="section-title">Your first <span class="text-cyan">90 days</span></h2>
-      <div class="timeline-horizontal">
-        <div class="timeline-item">
-          <span class="week">Week 1</span>
-          <h4>Discovery</h4>
-          <ul>
-            <li>Discovery Session</li>
-            <li>Offer Positioning</li>
-            <li>ICP Definition</li>
-            <li>LinkedIn Profile Optimizing/Branding</li>
-            <li>Infrastructure Setup</li>
-          </ul>
-        </div>
-        <div class="timeline-item">
-          <span class="week">Week 2</span>
-          <h4>Launch</h4>
-          <ul>
-            <li>Lead List Creation, Verification &amp; Approval</li>
-            <li>Script Writing &amp; Approval</li>
-            <li>LinkedIn Content Begins</li>
-            <li>LinkedIn Campaign Launch</li>
-            <li>Email Outreach Starts</li>
-          </ul>
-        </div>
-        <div class="timeline-item">
-          <span class="week">Weeks 3–4</span>
-          <h4>Optimize</h4>
-          <ul>
-            <li>Campaign Optimization</li>
-            <li>ICP Engagement</li>
-            <li>Reply Handling</li>
-            <li>Meeting Booking</li>
-            <li>Weekly Reports</li>
-          </ul>
-        </div>
-        <div class="timeline-item">
-          <span class="week">Month 2+</span>
-          <h4>Scale</h4>
-          <ul>
-            <li>Scale Winning Campaigns</li>
-            <li>Improve Messaging</li>
-            <li>Increase Meeting Volume</li>
-            <li>Continue Authority Building</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== TOOLS & INFRASTRUCTURE COVERAGE ===== -->
+    <!-- ===== 5. TOOLS & INFRASTRUCTURE COVERAGE ===== -->
     <section class="reveal tools-section">
       <h2 class="section-title">Tools &amp; Infrastructure <span class="text-cyan">Coverage</span></h2>
       <table class="tools-table">
@@ -1057,11 +1226,6 @@
         <tbody>
           <tr>
             <td>Email Sending Software</td>
-            <td class="check">✓</td>
-            <td class="empty-cell">—</td>
-          </tr>
-          <tr>
-            <td>Google Workspace / Outlook Inbox Setup</td>
             <td class="check">✓</td>
             <td class="empty-cell">—</td>
           </tr>
@@ -1098,19 +1262,80 @@
           <tr>
             <td>Outreach Domains</td>
             <td class="empty-cell">—</td>
-            <td class="highlight-cell">✓</td>
+            <td class="check">✓</td>
           </tr>
           <tr>
             <td>LinkedIn Account + Premium (if needed)</td>
             <td class="empty-cell">—</td>
-            <td class="highlight-cell">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Google Workspace / Outlook Inbox Setup</td>
+            <td class="empty-cell">—</td>
+            <td class="check">✓</td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <!-- ===== REPORTING & TRANSPARENCY ===== -->
-    <section class="reveal" style="margin-top:4rem;">
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 6. YOUR FIRST 60 DAYS ===== -->
+    <section class="reveal">
+      <h2 class="section-title">Your first <span class="text-cyan">60 days</span></h2>
+      <div class="timeline-horizontal">
+        <div class="timeline-item">
+          <span class="week">Week 1</span>
+          <h4>Discovery</h4>
+          <ul>
+            <li>Discovery Session</li>
+            <li>Offer Positioning</li>
+            <li>ICP Definition</li>
+            <li>LinkedIn Profile Optimizing/Branding</li>
+            <li>Infrastructure Setup</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <span class="week">Week 2</span>
+          <h4>Launch</h4>
+          <ul>
+            <li>Lead List Creation, Verification &amp; Approval</li>
+            <li>Script Writing &amp; Approval</li>
+            <li>LinkedIn Content Begins</li>
+            <li>LinkedIn Campaign Launch</li>
+            <li>Email Outreach Starts</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <span class="week">Weeks 3–4</span>
+          <h4>Optimize</h4>
+          <ul>
+            <li>Campaign Optimization</li>
+            <li>ICP Engagement</li>
+            <li>Reply Handling</li>
+            <li>Meeting Booking</li>
+            <li>Weekly Reports</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <span class="week">Month 2</span>
+          <h4>Scale</h4>
+          <ul>
+            <li>Scale Winning Campaigns</li>
+            <li>Improve Messaging</li>
+            <li>Increase Meeting Volume</li>
+            <li>Continue Authority Building</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 7. REPORTING & TRANSPARENCY ===== -->
+    <section class="reveal">
       <h2 class="section-title">Reporting &amp; <span class="text-cyan">Transparency</span></h2>
       <p class="reporting-intro">
         Every tool, dashboard, and data point GKR uses is accessible to Client — <strong>24/7, in real time.</strong>
@@ -1125,7 +1350,7 @@
             <li>Lead lists — who we're targeting and why</li>
           </ul>
         </div>
-        <div class="reporting-card reporting-weekly">
+        <div class="reporting-weekly">
           <h3>Weekly Strategy Call</h3>
           <p style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:0.8rem;">
             Every week we sit down and walk through what happened, what worked, and what's next.
@@ -1141,9 +1366,12 @@
       </div>
     </section>
 
-    <!-- ===== EVERYTHING INCLUDED ===== -->
-    <section class="reveal" style="margin-top:4rem;">
-      <h2 class="section-title">Everything <span class="text-cyan">included</span></h2>
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 8. EVERYTHING INCLUDED IN PILOT ===== -->
+    <section class="reveal">
+      <h2 class="section-title">Everything <span class="text-cyan">included in pilot</span></h2>
       <div class="checklist-grid">
         <div class="check-item">Cold Email</div>
         <div class="check-item">LinkedIn Outreach</div>
@@ -1160,48 +1388,214 @@
       </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
-    <section class="reveal" style="margin-top:4rem;">
-      <h2 class="section-title">FAQ</h2>
-      <div class="faq-item">
-        <div class="faq-question"><span>How long before we start seeing meetings?</span><span class="icon">▼</span></div>
-        <div class="faq-answer">Typically within 2–3 weeks after launch. Some clients see interest in week 1.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>Who writes the content?</span><span class="icon">▼</span></div>
-        <div class="faq-answer">Our team writes everything — from emails to LinkedIn posts — aligned with your brand.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>Do I need to purchase any software?</span><span class="icon">▼</span></div>
-        <div class="faq-answer">No. We provide all tools and licenses as part of the service.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>Can I approve messaging before launch?</span><span class="icon">▼</span></div>
-        <div class="faq-answer">Absolutely. Every campaign runs through your approval before going live.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question"><span>How are meetings qualified?</span><span class="icon">▼</span></div>
-        <div class="faq-answer">We use BANT + ICP fit. Only meetings with decision‑makers and clear pain points are passed.</div>
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 9. EXPECTED RESULTS IN 60 DAYS ===== -->
+    <section class="reveal">
+      <h2 class="section-title">Expected <span class="text-cyan">results in 60 days</span></h2>
+      <div class="results-flow">
+        <div class="results-step">
+          <h3>Week 1–4</h3>
+          <p class="results-desc">Build awareness and generate initial conversations.</p>
+          <div class="results-grid">
+            <span>6–10 Warm Conversations</span>
+            <span>2–4 Qualified Meetings</span>
+            <span>150–200 ICP Connections</span>
+            <span>10K+ Impressions on Content</span>
+            <span>150+ Profile Visits</span>
+          </div>
+        </div>
+
+        <div class="results-arrow">↓</div>
+
+        <div class="results-step">
+          <h3>Week 5–8</h3>
+          <p class="results-desc">Increase momentum as campaigns optimize.</p>
+          <div class="results-grid">
+            <span>10–15 Warm Conversations</span>
+            <span>4–8 Qualified Meetings</span>
+            <span>180–250 ICP Connections</span>
+            <span>15K+ Impressions</span>
+            <span>200+ Profile Visits</span>
+          </div>
+        </div>
+
+        <div class="results-arrow">↓</div>
+
+        <div class="results-step" style="border-color:var(--cyan);background:rgba(0,240,255,0.04);">
+          <h3 style="color:var(--cyan);">Ongoing</h3>
+          <p class="results-desc" style="color:var(--text-primary);">A predictable revenue engine that compounds over time.</p>
+        </div>
+
+        <p class="results-disclaimer">These are average results we generate based on consistent campaign execution. Actual outcomes depend on your offer, market, target audience, and sales process.</p>
       </div>
     </section>
 
-    <!-- ===== PILOT PROGRAM ===== -->
-    <section class="reveal" style="margin-top:4rem;">
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 10. PILOT PROGRAM COSTS ===== -->
+    <section class="reveal">
       <div class="pilot-card">
         <h3 style="font-weight:500;">Pilot Program</h3>
-        <div class="pilot-price">₹20,000</div>
-        <div style="color:var(--text-secondary);margin:-0.2rem 0 1rem;">every two weeks</div>
-        <p class="pilot-desc">Full‑stack revenue engine: outbound, authority, optimization. No hidden costs.</p>
+        <div class="pilot-price">₹40,000 <span style="font-size:1.2rem;font-weight:400;color:var(--text-secondary);">/ PM</span></div>
+        <div class="pilot-sub">Paid in Bi-weekly payments</div>
+        <p class="pilot-desc">No hidden costs.</p>
         <a href="#cta" class="btn btn-primary" style="width:100%;justify-content:center;">Start pilot →</a>
       </div>
     </section>
 
-    <!-- ===== FINAL CTA ===== -->
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 11. CLIENT SUCCESS ===== -->
+    <section class="reveal">
+      <h2 class="section-title">Client <span class="text-cyan">success</span></h2>
+      <div class="case-grid">
+
+        <!-- Case Study 1 -->
+        <div class="case-card">
+          <div class="case-title">Case Study 1 <span class="case-number">— <span class="case-company">Cognitiv AI</span></span></div>
+          <div class="case-short-desc">No outbound, no positioning. GKR built the system and the strategy — from zero to a full pipeline in 60 days.</div>
+          <div class="case-industry"><strong>Industry:</strong> AI Workflow Automation for Staffing Firms</div>
+          <div class="case-results">
+            <div class="result-item"><strong>20</strong> warm leads generated</div>
+            <div class="result-item"><strong>4</strong> deals closed</div>
+            <div class="result-item"><strong>$80,000</strong> in LTV</div>
+            <div class="result-item" style="color:var(--text-muted);font-size:0.85rem;">All within 60 days</div>
+          </div>
+          <div class="case-services">
+            <span>Offer Positioning</span><span>ICP Definition</span>
+            <span>Cold Email</span><span>LinkedIn Outreach</span><span>Warm Calling</span>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="case-card">
+          <div class="case-title">Case Study 2 <span class="case-number">— <span class="case-company">GAC</span></span></div>
+          <div class="case-short-desc">Needed to break into enterprise. GKR opened doors they couldn't — including a connection with Hitachi Global within the first two weeks.</div>
+          <div class="case-industry"><strong>Industry:</strong> Data Infrastructure Services — SnapLogic Partner</div>
+          <div class="case-results">
+            <div class="result-item"><strong>Connected</strong> with Hitachi Global in Week 2</div>
+            <div class="result-item"><strong>8</strong> qualified enterprise meetings booked</div>
+          </div>
+          <div class="case-services">
+            <span>Enterprise Outreach</span><span>Cold Email</span>
+            <span>LinkedIn Outreach</span><span>Warm Calling</span>
+          </div>
+        </div>
+
+        <!-- Case Study 3 -->
+        <div class="case-card">
+          <div class="case-title">Case Study 3 <span class="case-number">— <span class="case-company">Space Inventive (Talliant.ai)</span></span></div>
+          <div class="case-short-desc">Great product, no go-to-market motion. GKR built the pipeline from scratch and helped them land their first paying client.</div>
+          <div class="case-industry"><strong>Industry:</strong> AI Hiring Platform</div>
+          <div class="case-results">
+            <div class="result-item"><strong>20</strong> booked meetings</div>
+            <div class="result-item"><strong>Closed</strong> their first paying client</div>
+            <div class="result-item" style="color:var(--text-muted);font-size:0.85rem;">All within 60 days</div>
+          </div>
+          <div class="case-services">
+            <span>Cold Calling</span><span>Cold Email</span>
+            <span>LinkedIn Outreach</span><span>Warm Calling</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 12. REAL CAMPAIGN PERFORMANCE ===== -->
+    <section class="reveal">
+      <h2 class="section-title">Real <span class="text-cyan">campaign performance</span></h2>
+      <div class="analytics-grid">
+        <img src="images/campaign-analytics.png" alt="Campaign Analytics Dashboard" class="analytics-image" />
+        <img src="images/sequence-metrics.png" alt="Sequence Performance Metrics" class="analytics-image" />
+        <img src="images/linkedin-metrics.png" alt="LinkedIn Engagement Stats" class="analytics-image" />
+        <img src="images/reply-rates.png" alt="Reply Rate Dashboard" class="analytics-image" />
+      </div>
+      <p class="text-muted" style="text-align:center;font-size:0.9rem;">Real-time campaign performance data from active client campaigns.</p>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 13. FAQ ===== -->
+    <section class="reveal">
+      <h2 class="section-title">Faq</h2>
+      <div class="faq-item">
+        <div class="faq-question"><span>How soon can we expect our first qualified meetings?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">Most clients begin seeing positive replies within the first 2 weeks after launch. Qualified meetings typically start being booked within 2–4 weeks, depending on your market, offer, and sales readiness.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>What do you need from our team?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">Your team provides details on services &amp; offers, ICP clarity, previous clients details, initial inputs on branding/brand voice, case studies, approvals of scripts and content, and mainly attends qualified sales meetings.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Do we need to hire SDRs or purchase additional software?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">No. We provide the outreach infrastructure, software, data, and operational support required to run your campaigns. The only assets you'll need to purchase are those tied to your brand and intellectual property—such as outreach domains, outreach email inboxes, and a LinkedIn profile with Premium. There are no additional hiring costs, software subscriptions, or hidden fees.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>How do you ensure the meetings are qualified?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">Every opportunity is screened against your Ideal Customer Profile (ICP) and qualified before reaching your calendar. We focus on connecting you with decision-makers who have a genuine business need.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Can we review the messaging before campaigns go live?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">Absolutely. Nothing is launched without your approval. You'll review the messaging, positioning, lead lists and LinkedIn content.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>What happens if a campaign isn't performing?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">We continuously optimize targeting, messaging, offers, and campaign performance using live data. Weekly reviews ensure we're always improving results instead of waiting until the end of the engagement. We work as an internal part of your company with daily check-ins and corrections to get the best results.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>Is this suitable for every business?</span><span class="icon">▼</span></div>
+        <div class="faq-answer">Our process is designed for B2B companies with a clear offer, an identifiable Ideal Customer Profile, and a sales team capable of handling qualified meetings.</div>
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 14. READY TO BUILD PREDICTABLE PIPELINE? ===== -->
     <section id="cta" class="cta-section reveal">
-      <h2 style="font-size:2.6rem;">Ready to build <span class="text-cyan">predictable pipeline</span>?</h2>
+      <h2 style="font-size:2.6rem;text-transform:uppercase;">Ready to build <span class="text-cyan">predictable pipeline</span>?</h2>
       <p style="color:var(--text-secondary);max-width:400px;margin:0.6rem auto 2rem;">Book a 30‑min strategy call. No fluff, just a roadmap.</p>
       <a href="https://calendly.com/sowrabhkoriya/30min" target="_blank" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.2rem;">Book a Strategy Call →</a>
-      <div style="margin-top:3rem;font-size:0.8rem;color:var(--text-muted);">© Get Killer Results — built for B2B startups</div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 15. CONTACT US ===== -->
+    <section class="contact-section reveal">
+      <h2 class="section-title">Contact <span class="text-cyan">Us</span></h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="icon">✉️</span>
+          <a href="mailto:Getkillerresults@gmail.com">Getkillerresults@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="icon">📞</span>
+          <a href="tel:+918099060416">+91 80990 60416</a>
+        </div>
+        <div class="contact-item">
+          <span class="icon">🐦</span>
+          <a href="https://x.com/sowrabh_k" target="_blank">@sowrabh_k</a>
+        </div>
+        <div class="contact-item">
+          <span class="icon">🔗</span>
+          <a href="https://www.linkedin.com/company/get-killer-results/" target="_blank" class="linkedin-link">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div style="margin-top:2rem;font-size:0.8rem;color:var(--text-muted);">© Get Killer Results — built for B2B startups</div>
     </section>
 
   </div>
