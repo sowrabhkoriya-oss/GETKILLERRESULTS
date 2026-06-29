@@ -182,17 +182,37 @@
       padding: 1.2rem 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       margin-bottom: 3rem;
+      gap: 1rem;
     }
 
     .logo-wrapper {
       display: flex;
       align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
     }
 
     .logo-icon {
-      height: 112px;
+      height: 64px;
       width: auto;
       border-radius: 8px;
+    }
+
+    .brand-text {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      text-align: center;
+      flex: 1;
+    }
+
+    .brand-text .cyan {
+      color: var(--cyan);
+    }
+
+    .nav-cta {
+      flex-shrink: 0;
     }
 
     /* ===== HERO ===== */
@@ -1059,6 +1079,12 @@
     }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .brand-text {
+        font-size: 1.6rem;
+      }
+    }
+
     @media (max-width: 768px) {
       .hero-description .main-line {
         white-space: normal;
@@ -1069,7 +1095,10 @@
         width: 100%;
       }
       .logo-icon {
-        height: 56px;
+        height: 48px;
+      }
+      .brand-text {
+        font-size: 1.4rem;
       }
     }
 
@@ -1092,11 +1121,16 @@
       }
       .navbar {
         flex-wrap: wrap;
-        gap: 0.8rem;
         justify-content: center;
       }
       .logo-icon {
-        height: 48px;
+        height: 40px;
+      }
+      .brand-text {
+        font-size: 1.1rem;
+        flex-basis: 100%;
+        order: 3;
+        margin-top: 0.25rem;
       }
       .pillar-step {
         padding: 1.4rem 1.2rem;
@@ -1168,7 +1202,8 @@
              alt="Get Killer Results Logo" 
              class="logo-icon" />
       </div>
-      <div>
+      <span class="brand-text">GET <span class="cyan">KILLER</span> RESULTS</span>
+      <div class="nav-cta">
         <a href="https://calendly.com/sowrabhkoriya/30min" target="_blank" class="btn btn-primary" style="padding:0.5rem 1.6rem;">Book a Call</a>
       </div>
     </nav>
