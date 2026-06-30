@@ -193,7 +193,7 @@
     }
 
     .logo-icon {
-      height: 96px;
+      height: 64px;
       width: auto;
       border-radius: 8px;
     }
@@ -923,6 +923,37 @@
       font-weight: 400;
     }
 
+    /* ===== CALENDLY SECTION ===== */
+    .calendly-section {
+      padding: 1.5rem 0;
+    }
+
+    .calendly-wrapper {
+      background: var(--bg-card);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+      max-width: 900px;
+      margin: 0 auto;
+      transition: border-color 0.3s ease;
+    }
+
+    .calendly-wrapper:hover {
+      border-color: rgba(0, 240, 255, 0.4);
+    }
+
+    .calendly-wrapper h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .calendly-inline-widget {
+      min-width: 320px;
+      height: 500px;
+    }
+
     /* ===== CONTACT SECTION ===== */
     .contact-section {
       margin-top: 3rem;
@@ -1100,6 +1131,9 @@
       .brand-text {
         font-size: 1.4rem;
       }
+      .calendly-inline-widget {
+        height: 450px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -1173,6 +1207,13 @@
         right: 1.2rem;
         font-size: 2rem;
       }
+      .calendly-wrapper {
+        padding: 1rem;
+      }
+      .calendly-inline-widget {
+        height: 400px;
+        min-width: 280px;
+      }
     }
 
     /* ===== REVEAL ANIMATION ===== */
@@ -1204,7 +1245,7 @@
       </div>
       <span class="brand-text">GET <span class="cyan">KILLER</span> RESULTS</span>
       <div class="nav-cta">
-        <a href="https://calendly.com/sowrabhkoriya/30min" target="_blank" class="btn btn-primary" style="padding:0.5rem 1.6rem;">Book a Call</a>
+        <a href="#calendly-section" class="btn btn-primary" style="padding:0.5rem 1.6rem;">Book a Call</a>
       </div>
     </nav>
 
@@ -1217,7 +1258,7 @@
         <span class="highlight-line">ALL AT A SINGLE COST.</span>
       </div>
       <div class="hero-actions">
-        <a href="https://calendly.com/sowrabhkoriya/30min" target="_blank" class="btn btn-primary">Book Strategy Call →</a>
+        <a href="#calendly-section" class="btn btn-primary">Book Strategy Call →</a>
         <a href="#pillars" class="btn btn-primary">See how it works →</a>
       </div>
     </section>
@@ -1549,7 +1590,7 @@
         <div class="pilot-price">₹40,000 <span style="font-size:1.2rem;font-weight:400;color:var(--text-secondary);">/ PM</span></div>
         <div class="pilot-sub">Paid in Bi-weekly payments</div>
         <p class="pilot-desc">No hidden costs.</p>
-        <a href="https://calendly.com/sowrabhkoriya/30min" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">Start pilot →</a>
+        <a href="#calendly-section" class="btn btn-primary" style="width:100%;justify-content:center;">Start pilot →</a>
       </div>
     </section>
 
@@ -1639,12 +1680,6 @@
       <p class="text-muted" style="text-align:center;font-size:0.9rem;">Real-time campaign performance data from active client campaigns.</p>
     </section>
 
-    <!-- ===== LIGHTBOX ===== -->
-    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
-      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-      <img id="lightbox-image" src="" alt="Full size view" />
-    </div>
-
     <!-- ===== DIVIDER ===== -->
     <div class="divider"></div>
 
@@ -1688,13 +1723,25 @@
     <section id="cta" class="cta-section reveal">
       <h2 style="font-size:2.6rem;text-transform:uppercase;">Ready to build <span class="text-cyan">predictable pipeline</span>?</h2>
       <p style="color:var(--text-secondary);max-width:400px;margin:0.6rem auto 2rem;">Book a 30‑min strategy call. No fluff, just a roadmap.</p>
-      <a href="https://calendly.com/sowrabhkoriya/30min" target="_blank" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.2rem;">Book a Strategy Call →</a>
+      <a href="#calendly-section" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.2rem;">Book a Strategy Call →</a>
     </section>
 
     <!-- ===== DIVIDER ===== -->
     <div class="divider"></div>
 
-    <!-- ===== 15. CONTACT US ===== -->
+    <!-- ===== 15. CALENDLY EMBED ===== -->
+    <section id="calendly-section" class="calendly-section reveal">
+      <div class="calendly-wrapper">
+        <h2 class="section-title">Book a <span class="text-cyan">Strategy Call</span></h2>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/sowrabhkoriya/30min?hide_gdpr_banner=1" style="min-width:320px;height:500px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider"></div>
+
+    <!-- ===== 16. CONTACT US ===== -->
     <section class="contact-section reveal">
       <h2 class="section-title">Contact <span class="text-cyan">Us</span></h2>
       <div class="contact-grid">
@@ -1725,6 +1772,12 @@
 
   </div>
 
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-image" src="" alt="Full size view" />
+  </div>
+
   <script>
     // ===== SCRIPT.JS =====
     document.addEventListener('DOMContentLoaded', function() {
@@ -1751,6 +1804,17 @@
         });
       }, { threshold: 0.12 });
       reveals.forEach(r => revealObserver.observe(r));
+
+      // ---- Calendly widget reload on resize ----
+      let calendlyResizeTimeout;
+      window.addEventListener('resize', function() {
+        clearTimeout(calendlyResizeTimeout);
+        calendlyResizeTimeout = setTimeout(function() {
+          if (window.Calendly) {
+            window.Calendly.initInlineWidgets();
+          }
+        }, 500);
+      });
 
     });
 
